@@ -1,5 +1,8 @@
-![Logo](https://i.imgur.com/uNjpbhS_d.webp?maxwidth=760&fidelity=grand)
+<center>
 
+<img src="https://i.imgur.com/uNjpbhS.png" alt="Logo" width="200" height="200">
+
+</center>
 <br/> 
 
 # Projeto Individual Pesquisa e Inovação
