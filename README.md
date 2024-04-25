@@ -1,6 +1,6 @@
-
+<div align="center">
 ![Logo](https://i.imgur.com/CXe57vB.png)
-
+</div>
 
 # Projeto Individual Pesquisa e Inovação
 
@@ -15,9 +15,7 @@ Esse projeto gira em torno da minha paixão em academia e como ela conseguiu tra
 
 Liguagens e Ferramentas usadas no projeto
 
-<div align="left">
-
-
+<div align="center">
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 
