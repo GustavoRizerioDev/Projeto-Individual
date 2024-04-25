@@ -1,9 +1,3 @@
-<center>
-
-<img src="https://i.imgur.com/CXe57vB.png" alt="Logo" width="200" height="200">
-
-</center>
-
 # Projeto Individual Pesquisa e Inovação
 
 Esse projeto gira em torno da minha paixão em academia e como ela conseguiu tranformar a minha vida. 
