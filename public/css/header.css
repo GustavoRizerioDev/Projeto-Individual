@@ -1,0 +1,60 @@
+@import url(style.css);
+
+.cabacalho{
+    background: url(../assets/img/bg-main.png);
+    background-size: cover; 
+
+    width: 100%;
+    height: 500px;
+}
+
+.cabecalho-nav{
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    border-bottom: 1px solid var(--branco);
+
+}
+
+.nav-img{
+    width: 100px;
+    height: 100px;   
+}
+
+.nav-lista{
+    display: flex;
+    list-style: none; 
+}
+
+.nav-lista .nav-lista-item{
+    padding: 40px;
+}
+
+.nav-lista-item .lista-item-link{
+    color: white;
+    font-size: 20px;
+    font-family: "Bebas Neue", sans-serif;
+}
+
+.nav-lista-item .lista-item-link:active{
+    color: var(--vermelho);
+}
+
+.nav-botao{
+    border: 1px solid var(--vermelho);
+    padding: 15px 40px;
+    font-size: 20px;
+
+    color: white;
+    background-color: var(--vermelho);
+    font-family: "Bebas Neue", sans-serif;
+
+    transition: 1s;
+}
+
+.nav-botao:hover{
+    padding: 16px 41px;
+    background-color: #be0000;
+    font-size: 22px;
+}
