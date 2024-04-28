@@ -1,60 +1,97 @@
 @import url(style.css);
 
-.cabacalho{
-    background: url(../assets/img/bg-main.png);
-    background-size: cover; 
+.cabacalho {
+  background: url(../assets/img/bg-main.png);
+  background-size: cover;
 
-    width: 100%;
-    height: 500px;
+  width: 100%;
+  height: 640px;
 }
 
-.cabecalho-nav{
-    display: flex;
-    align-items: center;
-    width: 100%;
-
-    border-bottom: 1px solid var(--branco);
-
+/* Navegação */
+.cabecalho-nav {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+/*   border-bottom: 1px solid var(--branco); */
+  transition: background-color 0.3s ease;
 }
 
-.nav-img{
-    width: 100px;
-    height: 100px;   
+.nav-img {
+  width: 100px;
+  height: 100px;
 }
 
-.nav-lista{
-    display: flex;
-    list-style: none; 
+.nav-lista {
+  display: flex;
+  list-style: none;
 }
 
-.nav-lista .nav-lista-item{
-    padding: 40px;
+.nav-lista .nav-lista-item {
+  padding: 40px;
 }
 
-.nav-lista-item .lista-item-link{
-    color: white;
-    font-size: 20px;
-    font-family: "Bebas Neue", sans-serif;
+.nav-lista-item .lista-item-link {
+  color: white;
+  font-size: 20px;
+  font-family: "Bebas Neue", sans-serif;
+
+  position: relative;
+  transition: 0.8s;
 }
 
-.nav-lista-item .lista-item-link:active{
-    color: var(--vermelho);
+.lista-item-link::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0.125rem;
+  background-color: var(--vermelho);
+  transition: width 0.3s ease-in-out;
 }
 
-.nav-botao{
-    border: 1px solid var(--vermelho);
-    padding: 15px 40px;
-    font-size: 20px;
-
-    color: white;
-    background-color: var(--vermelho);
-    font-family: "Bebas Neue", sans-serif;
-
-    transition: 1s;
+.lista-item-link:hover {
+  color: var(--vermelho);
 }
 
-.nav-botao:hover{
-    padding: 16px 41px;
-    background-color: #be0000;
-    font-size: 22px;
+.lista-item-link:hover::after {
+  width: 100%;
+}
+
+/* Cabeçalho */
+.cabecalho-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  color: var(--branco);
+}
+
+.cabecalho-container-titulo{
+  margin-top: 160px;
+}
+
+
+.cabecalho-container-paragrafo {
+  font-size: 30px;
+  font-weight: 200;
+
+  margin: 50px;
+  max-width: 750px;
+
+  text-align: center;
+}
+
+.cabecalho-container-link {
+  background: none;
+  color: var(--vermelho);
+
+  margin: 50px;
+}
+
+.cabecalho-container-link:hover {
+  color: var(--branco);
 }
