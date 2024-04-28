@@ -9,20 +9,23 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/sectionTreinar.css" />
+    <link rel="stylesheet" href="css/main.css" />
   </head>
   <body>
-    <header class="cabacalho">
+    <header class="cabacalho" id="home">
       <nav class="cabecalho-nav">
         <img
           src="assets/img/logo/logoBranca.png"
           alt="Logo de pose de costas com biceps duplo"
-          class="nav-img"/>
+          class="nav-img"
+        />
         <ul class="nav-lista">
           <li class="nav-lista-item">
-            <a href="#" class="lista-item-link home">Home</a>
+            <a href="#home" class="lista-item-link home">Home</a>
           </li>
           <li class="nav-lista-item">
-            <a href="" class="lista-item-link">Por Que</a>
+            <a href="#porque" class="lista-item-link">Por Que</a>
           </li>
           <li class="nav-lista-item">
             <a href="" class="lista-item-link">Sobre</a>
@@ -34,7 +37,7 @@
             <a href="" class="lista-item-link">Contato</a>
           </li>
         </ul>
-        <a href="" class="nav-botao">Login</a>
+        <a href="" class="nav-botao botao">Login</a>
       </nav>
       <div class="cabecalho-container">
         <h1 class="cabecalho-container-titulo">Academia</h1>
@@ -42,9 +45,130 @@
           Ser fitness não é sobre ter o corpo perfeito, mas sim sobre ter uma
           vida saudável e equilibrada.
         </p>
-        <a href="" class="cabecalho-container-link">Conheça mais sobre</a>
+        <a href="#porque" class="cabecalho-container-link botao"
+          >Conheça mais sobre</a
+        >
       </div>
     </header>
+
+    <section class="secao-treinar" id="porque">
+      <div class="treinar-textos">
+        <h1 class="treinar-titulo">Por que <span>Treinar</span></h1>
+        <p class="treinar-paragrafo">
+          Para o seu maior projeto, os resultados não serão encontrados apenas
+          na frente do espelho. A disciplina modifica não apenas o corpo, mas a
+          alma
+        </p>
+      </div>
+      <div class="container-pricipal-treinar">
+        <div class="card-saude-fisica container-treinar">
+          <article>
+            <h4 class="card-numero">01</h4>
+            <h5 class="card-titulo">Saúde física</h5>
+            <p class="card-paragrafo">
+              A prática regular de exercícios físicos pode melhorar a saúde do
+              coração, fortalecer os músculos, aumentar a resistência e
+              flexibilidade, além de ajudar a manter um peso saudável. A
+              academia oferece uma variedade de equipamentos e atividades que
+              podem atender diferentes necessidades e objetivos de
+              condicionamento físico.
+            </p>
+          </article>
+        </div>
+        <div class="card-saude-mental container-treinar">
+          <article>
+            <h4 class="card-numero">02</h4>
+            <h5 class="card-titulo">Saúde Mental</h5>
+            <p class="card-paragrafo">
+              O exercício físico é conhecido por liberar endorfinas,
+              neurotransmissores que ajudam a reduzir o estresse, ansiedade e
+              sintomas de depressão. Além disso, a academia pode proporcionar um
+              ambiente social positivo, onde você pode conhecer pessoas com
+              interesses semelhantes, criando uma sensação de comunidade e apoio
+              mútuo.
+            </p>
+          </article>
+        </div>
+        <div class="card-autoestima container-treinar">
+          <article>
+            <h4 class="card-numero">03</h4>
+            <h5 class="card-titulo">Autoestima e confiança</h5>
+            <p class="card-paragrafo">
+              A melhoria da forma física e a superação de desafios pessoais na
+              academia podem aumentar a autoestima e a confiança em si mesmo.
+              Ver os resultados do seu esforço e dedicação pode ser muito
+              gratificante e motivador.
+            </p>
+          </article>
+        </div>
+        <div class="card-metas container-treinar">
+          <article>
+            <h4 class="card-numero">04</h4>
+            <h5 class="card-titulo">Estabelecimento de metas e disciplina</h5>
+            <p class="card-paragrafo">
+              Frequentar a academia envolve estabelecer metas de condicionamento
+              físico e trabalhar para alcançá-las. Isso pode ajudar a
+              desenvolver habilidades de disciplina, foco e determinação que são
+              úteis não apenas na academia, mas também em outras áreas da vida,
+              como no trabalho e nos estudos.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <main class="container-pricipal">
+      <section class="container-contexto">
+        <figure class="contexto-img">
+          <img src="assets/img/contexto-img.png" alt="" />
+        </figure>
+        <article class="artigo-contexto">
+          <h1 class="contexto-titulo">Contexto <br><span>Projeto</span></h1>
+          <p class="contexto-paragrafo">
+            O projeto consiste em desenvolver um projeto individual sobre
+            academia, utilizando HTML, CSS e Javascript para criar uma interface
+            amigável e interativa, e aplicando validações de formulários em
+            Javascript para garantir a integridade dos dados inseridos pelos
+            usuários. Além disso, será implementada uma API Node.js para
+            realizar operações de cadastro e consulta no banco de dados,
+            proporcionando uma experiência completa de gerenciamento de
+            informações. A academia busca contribuir diretamente com os ODS 3
+            (Saúde e Bem-Estar) e 9 (Indústria, Inovação e Infraestrutura) da
+            ONU. Isso envolve oferecer um ambiente propício para a prática
+            regular de exercícios físicos, promovendo a saúde e o bem-estar dos
+            frequentadores, além de adotar tecnologias sustentáveis e inovadoras
+            para o desenvolvimento e manutenção das instalações. 
+          </p>
+        </article>
+      </section>
+      <section class="container-contexto container-historia">
+        <article class="artigo-contexto artigo-historia">
+          <h1 class="contexto-titulo historia-titulo">
+            Minha historia <br><span>Na academia</span>
+          </h1>
+          <p class="contexto-paragrafo historia-paragrafo">
+            No final de 2022, em novembro, comecei a frequentar a academia por
+            razões de saúde e também para melhorar minha estética. Inicialmente,
+            eu era muito tímido lá, até mesmo com receio de perguntar sobre a
+            execução correta dos exercícios. No entanto, com o passar do tempo,
+            a academia se tornou como uma segunda casa para mim, um lugar de
+            tranquilidade onde conheci pessoas incríveis. Percebi que na
+            academia ninguém se importa com julgamentos; as pessoas estão lá
+            simplesmente para treinar. Cada um tem seus objetivos individuais,
+            mas todos compartilham do mesmo propósito. Ao longo do tempo,
+            aprendi não apenas a dominar os exercícios, mas também a apreciar a
+            variedade de experiências e histórias de vida que cada pessoa da
+            academia trazia consigo. Essa jornada não apenas transformou meu
+            corpo, mas também minha mentalidade. A academia se tornou um símbolo
+            de superação pessoal e de comunidade, onde todos, independentemente
+            de suas origens ou objetivos, compartilham do mesmo propósito: o
+            desejo de se tornarem a melhor versão de si mesmos
+          </p>
+        </article>
+        <figure class="contexto-img historia-img">
+          <img src="assets/img/historia.png" alt="" />
+        </figure>
+      </section>
+    </main>
   </body>
   <script src="js/script.js"></script>
 </html>
