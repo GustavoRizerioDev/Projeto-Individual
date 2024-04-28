@@ -1,0 +1,40 @@
+.container-pricipal {
+  background: url(../assets/img/bgMain.png);
+}
+
+.contexto-img {
+  margin-top: 60px;
+}
+
+.container-contexto {
+  display: flex;
+  align-items: center;
+}
+
+.artigo-contexto {
+  text-align: right;
+  color: var(--branco);
+}
+
+.contexto-titulo span {
+  color: var(--vermelho);
+}
+
+.contexto-paragrafo {
+  max-width: 602px;
+  font-weight: bold;
+}
+
+/* Minha historia */
+.artigo-historia {
+  text-align: left;
+}
+
+.historia-titulo {
+  text-align: left;
+}
+
+.container-historia {
+  margin-top: 50px;
+  padding-bottom: 80px;
+}
