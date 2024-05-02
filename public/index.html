@@ -11,8 +11,10 @@
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css/sectionTreinar.css" />
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/sectionSobre.css" />
   </head>
   <body>
+    
     <header class="cabacalho" id="home">
       <nav class="cabecalho-nav">
         <img
@@ -28,16 +30,19 @@
             <a href="#porque" class="lista-item-link">Por Que</a>
           </li>
           <li class="nav-lista-item">
-            <a href="" class="lista-item-link">Sobre</a>
+            <a href="#contexto" class="lista-item-link">Contexto</a>
           </li>
           <li class="nav-lista-item">
             <a href="" class="lista-item-link">Academia</a>
           </li>
           <li class="nav-lista-item">
+            <a href="" class="lista-item-link">Sobre</a>
+          </li>
+          <li class="nav-lista-item">
             <a href="" class="lista-item-link">Contato</a>
           </li>
         </ul>
-        <a href="" class="nav-botao botao">Login</a>
+        <a href="./login.html" class="nav-botao botao">Login</a>
       </nav>
       <div class="cabecalho-container">
         <h1 class="cabecalho-container-titulo">Academia</h1>
@@ -116,13 +121,14 @@
         </div>
       </div>
     </section>
-    <main class="container-pricipal">
+
+    <main class="container-pricipal" id="contexto">
       <section class="container-contexto">
         <figure class="contexto-img">
           <img src="assets/img/contexto-img.png" alt="" />
         </figure>
         <article class="artigo-contexto">
-          <h1 class="contexto-titulo">Contexto <br><span>Projeto</span></h1>
+          <h1 class="contexto-titulo">Contexto <br /><span>Projeto</span></h1>
           <p class="contexto-paragrafo">
             O projeto consiste em desenvolver um projeto individual sobre
             academia, utilizando HTML, CSS e Javascript para criar uma interface
@@ -143,7 +149,7 @@
       <section class="container-contexto container-historia">
         <article class="artigo-contexto artigo-historia">
           <h1 class="contexto-titulo historia-titulo">
-            Minha historia <br><span>Na academia</span>
+            Minha historia <br /><span>Na academia</span>
           </h1>
           <p class="contexto-paragrafo historia-paragrafo">
             No final de 2022, em novembro, comecei a frequentar a academia por
@@ -170,5 +176,27 @@
       </section>
     </main>
   </body>
-  <script src="js/script.js"></script>
+
+  <section class="container-sobre">
+    <div class="sobre-textos">
+      <h5>Desenvolvedor</h5>
+      <h4>Gustavo Souza</h4>
+      <img src="assets/img/Rectangle.svg" alt="" />
+      <p>
+        Olá! Meu nome é Gustavo, sou um entusiasta da tecnologia e um
+        desenvolvedor em ascensão. Com meus 18 anos de idade, estou mergulhado
+        no mundo da programação, buscando constantemente expandir meu
+        conhecimento e aprimorar minhas habilidades. Atualmente, estudo na SP
+        Tech, uma instituição renomada que me proporciona uma base sólida em
+        programação e desenvolvimento de software. Estou imerso em diversas
+        linguagens de programação, frameworks e conceitos, sempre buscando
+        entender as melhores práticas e as últimas tendências do setor.
+      </p>
+      <a href="" class="botao sobre-botao">Fale comigo</a>
+    </div>
+    <figure class="sobre-img">
+      <img src="assets/img/eu.png" alt="" />
+    </figure>
+  </section>
+  <script src="js/login.js"></script>
 </html>
