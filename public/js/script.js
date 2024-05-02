@@ -7,3 +7,4 @@ window.addEventListener("scroll", function() {
     navbar.style.backgroundColor = "#121212";
   }
 });
+
