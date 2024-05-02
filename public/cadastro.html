@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cadastro</title>
+    <link rel="shortcut icon" href="assets/icon/icon.png" type="image/x-icon" />
+    <script
+      src="https://kit.fontawesome.com/fc5e9b4747.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/login/login.css" />
+  </head>
+  <body>
+    <main class="conteudo-principal">
+      <div class="container-principal">
+  
+        <div class="container-login">
+          <a href="index.html"><img src="assets/img/logo/logoBranca.png" alt="" class="login-logo" style="width: 80px;"/></a>
+          <h5 class="login-titulo">Cadastro</h5>
+          <p>
+            Se você ja tem uma conta
+            <a href="login.html">Faça login!</a>
+          </p>
+          <div class="input-container">
+            <input type="email" id="emailInput" required/>
+            <label><i class="fa-regular fa-envelope"></i>Email</label>
+          </div>
+          <div class="input-container">
+            <input required type="text" id="nome-input"/>
+            <label><i class="fa-solid fa-user"></i>Nome</label>
+          </div>
+          <div class="input-container">
+            <input required type="password" id="senha-input" />
+            <label><i class="fa-solid fa-lock"></i>Senha</label>
+          </div>
+          <div class="input-container">
+            <input required type="password" id="senha-input-confirmar" />
+            <label><i class="fa-solid fa-lock"></i>Confirme a Senha</label>
+          </div>
+          <button class="botao botao-login" onclick="cadastro()">Cadastro</button>
+        </div>
+      </div>
+    </main>
+    <script src="js/cadastro.js"></script>
+  </body>
+</html>
