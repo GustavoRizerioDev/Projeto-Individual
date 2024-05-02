@@ -4,6 +4,7 @@
   --branco: #ffffff;
   --cinzaClaro: #cccccc;
   --cinza: #484848;
+  --cinzaTitulo: #868490;
 
   --vermelho: #ff0000;
 
@@ -24,8 +25,7 @@ html{
 
 h1,
 h2,
-h3,
-span{
+h3{
   font-family: "Bebas Neue", sans-serif;
   font-size: 80px;
   font-weight: 100;
@@ -50,28 +50,19 @@ span{
   font-size: 22px;
 }
 
-/* Estilos para a barra de rolagem */
 ::-webkit-scrollbar {
   width: .625rem;
-  /* largura da barra de rolagem */
 }
 
-/* Estilos para a alça da barra de rolagem */
 ::-webkit-scrollbar-thumb {
-  background-color: var(--azul-ceu);
-  /* cor da alça */
-  border-radius: .625rem;
-  /* borda arredondada */
+  background-color: var(--pretoBg);
+  border-radius: 2px;
 }
 
-/* Estilos para a alça da barra de rolagem quando passa o mouse por cima */
 ::-webkit-scrollbar-thumb:hover {
-  background-color: var(--azul-titulo);
-  /* cor da alça quando passa o mouse por cima */
+  background-color: var(--preto);
 }
 
-/* Estilos para a pista da barra de rolagem */
 ::-webkit-scrollbar-track {
   background-color: #f3f3f3;
-  /* cor da pista */
 }

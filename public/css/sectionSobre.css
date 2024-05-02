@@ -1,0 +1,43 @@
+.container-sobre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--preto);
+  color: var(--branco);
+}
+
+.sobre-textos {
+  margin: 50px 120px;
+  position: relative;
+}
+
+.sobre-textos h5 {
+  color: var(--cinzaTitulo);
+  font-size: 47px;
+  font-weight: 400;
+  margin: 20px 0;
+}
+
+.sobre-textos h4 {
+  margin: 0;
+  font-size: 60px;
+  font-weight: 500;
+}
+
+.sobre-textos p {
+  color: var(--cinzaTitulo);
+  margin-bottom: 50px;
+}
+
+.sobre-textos img {
+  margin: 50px 0;
+}
+
+.sobre-botao{
+    background-color: transparent;
+}
+
+.sobre-img {
+  margin: 50px 80px;
+}
