@@ -1,0 +1,58 @@
+.academia-treinei-container {
+  background-color: #000;
+  color: var(--branco);
+  text-align: center;
+}
+
+.academia-treinei-container h1 {
+  padding: 40px;
+}
+.academia-treinei-container span {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 80px;
+  font-weight: 100;
+  color: var(--vermelho);
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.carousel-slide {
+  display: flex;
+  width: 300%;
+  transition: transform 0.5s ease;
+}
+
+.carousel-item {
+  flex: 0 0 33.33%; /* 33.33% para 3 slides visíveis */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.carousel-item span {
+  color: #faff00;
+}
+
+button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 200px;
+  color: rgb(255, 255, 255);
+}
+
+#prevBtn {
+  left: 0;
+  font-size: 40px;
+}
+
+#nextBtn {
+  right: 0;
+  font-size: 40px;
+}
