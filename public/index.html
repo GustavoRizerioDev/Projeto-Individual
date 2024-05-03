@@ -12,9 +12,10 @@
     <link rel="stylesheet" href="css/sectionTreinar.css" />
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/sectionSobre.css" />
+    <link rel="stylesheet" href="css/academia.css" />
+    <link rel="stylesheet" href="css/carousel.css" />
   </head>
   <body>
-    
     <header class="cabacalho" id="home">
       <nav class="cabecalho-nav">
         <img
@@ -198,5 +199,101 @@
       <img src="assets/img/eu.png" alt="" />
     </figure>
   </section>
-  <script src="js/login.js"></script>
+
+  <section class="academia-container">
+    <h1>
+      <span>Academias</span><br />
+      para começar
+    </h1>
+    <p>
+      Independentemente da academia escolhida, é importante visitar pessoalmente
+      as instalações, conversar com os instrutores e entender os planos de
+      adesão antes de tomar uma decisão. Escolha uma academia que atenda às suas
+      necessidades, objetivos e orçamento.
+    </p>
+    <section class="container-flip-card">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="assets/img/gavioes.png" alt="Avatar" />
+            <div class="card-text">
+              <h5>Gaviões</h5>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <h1>Gaviões</h1>
+            <p>
+              A Academia Gaviões é o lugar perfeito para alcançar seus objetivos
+              de condicionamento físico e saúde. Com uma equipe de instrutores
+              altamente qualificados e uma ampla variedade de equipamentos de
+              última geração.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="assets/img/ultra.png" alt="Avatar" />
+            <div class="card-text">
+              <h5>Ultra</h5>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <h1>Ultra</h1>
+            <p>
+              Na Academia Ultra, se valoriza não apenas o desempenho físico, mas
+              também o equilíbrio mental e emocional. Oferecendo uma variedade
+              de aulas e atividades que visam fortalecer a mente, como yoga,
+              meditação e sessões de coaching pessoal e as areas de musculação.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="assets/img/smart.png" alt="Avatar" />
+            <div class="card-text">
+              <h5>Smart Fit</h5>
+            </div>
+          </div>
+          <div class="flip-card-back">
+            <h1>Smart Fit</h1>
+            <p>
+              Smart Fit se destaca por sua abordagem simplificada, oferecendo
+              planos de adesão flexíveis e sem complicações. Com opções que se
+              adequam a diferentes necessidades e orçamentos, a academia torna o
+              acesso à atividade física mais acessível para uma ampla gama de
+              pessoas
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <article class="academia-treinei-container">
+    <h1><span>Academias</span> que ja treinei</h1>
+    <div class="carousel-container">
+      <div class="carousel-slide">
+        <div class="carousel-item">
+          <h2>Smart <span>Fit</span></h2>
+          <p>Texto do primeiro slide.</p>
+        </div>
+        <div class="carousel-item">
+          <h2>Slide 2</h2>
+          <p>Texto do segundo slide.</p>
+        </div>
+        <div class="carousel-item">
+          <h2>Slide 3</h2>
+          <p>Texto do terceiro slide.</p>
+        </div>
+      </div>
+      <button id="prevBtn">&#10094;</button>
+      <button id="nextBtn">&#10095;</button>
+    </div>
+  </article>
 </html>
+
+<script src="js/script.js"></script>
