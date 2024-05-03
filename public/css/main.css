@@ -18,6 +18,10 @@
 
 .contexto-titulo span {
   color: var(--vermelho);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 80px;
+  font-weight: 100;
+  margin-top: 50px;
 }
 
 .contexto-paragrafo {
