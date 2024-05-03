@@ -10,6 +10,8 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+
+
 }
 
 .login-logo {
@@ -27,6 +29,7 @@
 
   max-width: 500px;
   border-radius: 30px;
+  box-shadow: -2px 20px 46px -6px rgba(0,0,0,1);
   background: var(--pretoBg);
 }
 
