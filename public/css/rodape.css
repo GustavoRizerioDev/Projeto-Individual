@@ -1,0 +1,27 @@
+.rodape{
+    background-color: var(--preto);
+}
+
+.rodape ul{
+    max-width: 800px;
+}
+
+.rodape-final{
+    color: var(--branco);
+    border-top: 1px solid var(--cinza);
+    display: flex;
+    justify-content: end;
+    margin: 0;
+    padding: 40px;
+
+    font-weight: 300;
+    font-size: 14px;
+}
+
+.rodape-final p{
+    margin-left: 0;
+}
+
+.rodape-texto-rights{
+    margin-right: 0;
+}

@@ -32,9 +32,26 @@
   box-sizing: border-box;
 }
 
-.carousel-item span {
-  color: #faff00;
+.carousel-item p {
+  max-width: 1000px;
 }
+
+.carousel-item-kona span {
+  color: #73aace;
+}
+
+.carousel-item img{
+    padding: 25px 0;
+}
+
+.carousel-item-smart span{
+    color: #FAFF00;
+}
+
+.carousel-item-ultra h2{
+    color: #2fafaf;
+}
+
 
 button {
   position: absolute;
