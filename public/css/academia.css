@@ -1,0 +1,105 @@
+@import url(style.css);
+
+.academia-container {
+  background-color: var(--pretoBg);
+  text-align: center;
+  color: var(--branco);
+}
+
+.academia-container h1 {
+  max-width: 680px;
+  padding-top: 40px;
+}
+
+.academia-container span {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 80px;
+  font-weight: 100;
+  color: var(--vermelho);
+}
+
+.academia-container p {
+  max-width: 600px;
+  font-weight: 200;
+  padding-bottom: 40px;
+}
+
+.container-flip-card {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  padding-bottom: 20px;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 400px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  border: 1px solid var(--vermelho);
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+  height: 400px;
+  display: flex; 
+  align-items: flex-end; 
+}
+
+.card-text {
+  position: absolute;
+  left: 0;
+  right: 0; 
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.589);
+  color: var(--branco);
+}
+
+.card-text h5 {
+  font-size: 28px; 
+  margin: 10px; 
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.flip-card-front img {
+  height: 400px;
+  width: 300px;
+}
+
+.flip-card-back {
+  background-color: var(--pretoBg);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.flip-card-back p{
+  padding: 0 20px;
+}
