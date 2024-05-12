@@ -15,12 +15,14 @@
     <link rel="stylesheet" href="css/login/login.css" />
   </head>
   <body>
+    <div class="card_erro" id="cardErro">
+      <span id="mensagem_erro"></span>
+    </div>
     <main class="conteudo-principal">
+      
       <div class="container-principal">
         <div class="alerta_erro">
-          <div class="card_erro" id="cardErro">
-            <span id="mensagem_erro"></span>
-          </div>
+       
         <div class="container-login">
           <a href="index.html"><img src="assets/img/logo/logoBranca.png" alt="" class="login-logo" /></a>
           <h5 class="login-titulo">Login</h5>
@@ -56,7 +58,7 @@
 
       if (emailVar == "" || senhaVar == "") {
           cardErro.style.display = "block"
-          mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+          mensagem_erro.innerHTML = "Preencha todos os campos";
           finalizarAguardar();
           return false;
       }
@@ -89,7 +91,6 @@
                   sessionStorage.EMAIL_USUARIO = json.email;
                   sessionStorage.NOME_USUARIO = json.nome;
                   sessionStorage.ID_USUARIO = json.id;
-                  sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                   setTimeout(function () {
                       window.location = "./dashboard/cards.html";
