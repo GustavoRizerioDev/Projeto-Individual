@@ -71,6 +71,3 @@ CREATE TABLE Rotina (
 select * from usuario;
 select * from academia;
 select * from treinos;
-
-
-
