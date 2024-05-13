@@ -1,120 +1,234 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-
-<head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link
+      rel="shortcut icon"
+      href="../assets/icon/favicon2.ico"
+      type="image/x-icon"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AquaTech | Tempo Real</title>
 
-
-    <link rel="stylesheet" href="./../css/dashboards.css">
+    <link rel="stylesheet" href="./../css/dashboards.css" />
     <link rel="stylesheet" href="./../css/estilo.css" />
+    <link rel="stylesheet" href="../css/login/login.css" />
+    <style>
+      .botao {
+        border: 1px solid var(--vermelho);
+        padding: 15px 40px;
+        font-size: 20px;
+
+        color: white;
+        background-color: var(--vermelho);
+        font-family: "Bebas Neue", sans-serif;
+
+        transition: 1s;
+      }
+
+      .botao:hover {
+        padding: 16px 41px;
+        background-color: #be0000;
+        font-size: 22px;
+      }
+    </style>
+
+    <script
+      src="https://kit.fontawesome.com/fc5e9b4747.js"
+      crossorigin="anonymous"
+    ></script>
 
     <script src="../js/sessao.js"></script>
     <script src="../js/alerta.js"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-</head>
+      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
-
+  <body onload=" listarAcademia(), listarTreinos()">
     <div class="janela">
+      <div class="header-left dash-header">
+        <h1>Academia</h1>
 
-        <div class="header-left dash-header">
-
-            <h1>AquaTech</h1>
-
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-            </div>
-
-            <div class="btn-nav">
-                <h3>Formulario</h3>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Rotina</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
+        <div class="hello">
+          <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
         </div>
 
-        <div class="dash">
-            <div id="alerta">
-            </div>
-            <div class="area-parametros-alerta">
-                <p class="titulo-legenda">
-                    Legenda - Parâmetros para Alertas
-                </p>
-                <div class="parametros-alerta">
-                    <div class="item-regua perigo-frio">
-                        <p>Perigo</p>
-                        <p>&lt;=5°C</p>
-                    </div>
-                    <div class="item-regua alerta-frio">
-                        <p>Alerta</p>
-                        <p>&lt;=10°C</p>
-                    </div>
-                    <div class="item-regua ideal">
-                        <p>Ideal</p>
-                        <p>20°C</p>
-                    </div>
-                    <div class="item-regua alerta-quente">
-                        <p>Alerta</p>
-                        <p>&gt;=22°C</p>
-                    </div>
-                    <div class="item-regua perigo-quente">
-                        <p>Perigo</p>
-                        <p>&gt;=23°C</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cards" id="cardAquarios">
-
-            </div>
-
+        <div class="btn-nav">
+          <h3>Formulario</h3>
         </div>
 
+        <div class="btn-nav-white">
+          <a href="./dashboard.html">
+            <h3>Gráficos</h3>
+          </a>
+        </div>
+
+        <div class="btn-nav-white">
+          <a href="./mural.html">
+            <h3>Rotina</h3>
+          </a>
+        </div>
+
+        <div class="btn-logout" onclick="limparSessao()">
+          <h3>Sair</h3>
+        </div>
+      </div>
+
+      <div class="dash">
+        <div id="alerta"></div>
+        <main class="conteudo-principal">
+          <div class="container-principal">
+            <div class="container-login">
+              <h5 class="login-titulo" style="margin: 0">Formulario</h5>
+              <div class="input-container">
+                <span>Qual seu genero?</span>
+                <select name="empresas" id="listaGenero">
+                  <option selected>Selecione seu genero</option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Feminino">Feminino</option>
+                  <option value="nao">Prefiro não informar</option>
+                </select>
+              </div>
+              <div class="input-container">
+                <span>Qual melhor academia:</span>
+                <select name="empresas" id="listaAcademia">
+                  <option selected>Selecione uma Academia</option>
+                </select>
+              </div>
+              <div class="input-container">
+                <span>Qual sua avaliação para esta academia?</span>
+                <select name="empresas" id="listaAvaliacao">
+                  <option selected>Selecione uma Nota</option>
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+              <div class="input-container">
+                <span>Qual seu treino favorito:</span>
+                <select name="empresas" id="listaTreino">
+                  <option selected>Selecione um treino</option>
+                </select>
+              </div>
+              <button class="botao botao-login" onclick="enivar()">
+                Enivar
+              </button>
+            </div>
+          </div>
+        </main>
+      </div>
     </div>
+  </body>
+  <script>
+    function enivar() {
+      aguardar();
 
-</body>
+      //Recupere o valor da nova input pelo nome do id
+      // Agora vá para o método fetch logo abaixo
+      var idUsuario = sessionStorage.ID_USUARIO;
+      var generoVar = listaGenero.value;
+      var avaliacaoVar = listaAvaliacao.value;
+      var academiaVar = listaAcademia.value;
+      var treinoVar = listaTreino.value;
 
-<script>
+      if (nomeVar.length <= 1) {
+        alert("Insira um nome valido com mais de 1 caracter");
+      } else if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".") == -1) {
+        alert("Insira um email valido com @ e .");
+      } else if (senhaVar.length < 6) {
+        alert("Insira uma senha valida de mais de 6 caracteres");
+      } else if (confirmacaoSenhaVar !== senhaVar) {
+        alert("A senha de confirmação tem que ser igual a senha");
+      } else if (cpfVar < 11) {
+        alert("Insira um cpf valido com 11 digitos");
+      } else if (empresaVar == "") {
+        alert("Selecione uma empresa");
+      } else {
+        // Enviando o valor da nova input
+        fetch(`/academia/enviar/${idUsuario}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+     
+            idUsuario: idUsuario,
+            generoServer: generoVar,
+            avaliacaoServer: avaliacaoVar,
+            academiaServer: academiaVar,
+            treinoServer: treinodVar,
+          }),
+        })
+          .then(function (resposta) {
+            console.log("resposta: ", resposta);
 
-    function exibirAquarios() {
-        JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
-            document.getElementById("cardAquarios").innerHTML += `
-                    <div class="card-aquario">
-                        <div class="title-aquario">
-                            <h1>${item.descricao}</h1>
-                        </div>
-                        <div class="desc-aquario">
-                        <div class="temperatura">
-                            <p id="temp_aquario_${item.id}">-°C</p>
-                        </div>
-                        <div class="cor-alerta" id="card_${item.id}"></div>
-                    </div>
-                    </div>
-                    `
+            if (resposta.ok) {
+              cardErro.style.display = "block";
+
+              mensagem_erro.innerHTML =
+            "Formulario enviado com sucesso!";
+
+              limparFormulario();
+              finalizarAguardar();
+            } else {
+              throw "Houve um erro ao tentar realizar o cadastro!";
+            }
+          })
+          .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+          });
+
+        return false;
+      }
+    }
+
+    function listarAcademia() {
+      fetch("/academia/listarAcademia", {
+        method: "GET",
+      })
+        .then(function (resposta) {
+          resposta.json().then((academias) => {
+            academias.forEach((academia) => {
+              listaAcademia.innerHTML += `<option value='${academia.id}'>${academia.nome}</option>`;
+            });
+          });
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
         });
     }
 
-</script>
+    function listarTreinos() {
+      fetch("/academia/listarTreinos", {
+        method: "GET",
+      })
+        .then(function (resposta) {
+          resposta.json().then((treinos) => {
+            treinos.forEach((treino) => {
+                listaTreino.innerHTML += `<option value='${treino.id}'>${treino.nomeTreino}</option>`;
+            });
+          });
+        })
+        .catch(function (resposta) {
+          console.log(`#ERRO: ${resposta}`);
+        });
+    }
 
+    function sumirMensagem() {
+      cardErro.style.display = "none";
+    }
+  </script>
 </html>
