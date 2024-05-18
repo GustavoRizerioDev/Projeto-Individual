@@ -20,30 +20,33 @@ function buscarPorId(req, res) {
   });
 }
 
-function enivar(req, res) {
+function enviar(req, res) {
   // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-  var nome = req.body.nomeServer;
-  var email = req.body.emailServer;
-  var senha = req.body.senhaServer;
   var idUsuario = req.params.idUsuario;
+  var genero = req.body.generoServer;
+  var avaliacao = req.body.avaliacaoServer;
+  var academia = req.body.academiaServer;
+  var treino = req.body.treinoServer;
 
   // Faça as validações dos valores
-  if (email == undefined) {
-    res.status(400).send("Seu nome está undefined!");
-  } else if (nome == undefined) {
-    res.status(400).send("Seu email está undefined!");
-  } else if (senha == undefined) {
-    res.status(400).send("Sua senha está undefined!");
+  if (genero == undefined) {
+    res.status(400).send("Seu genero está undefined!");
+  } else if (avaliacao == undefined) {
+    res.status(400).send("Seu avaliacao está undefined!");
+  } else if (academia == undefined) {
+    res.status(400).send("Sua academia está undefined!");
+  } else if (treino == undefined) {
+    res.status(400).send("Seu treino está undefined!");
   } else {
-    usuarioModel
-      .cadastrar(email, nome, senha)
+    academiaModel
+      .enviar(idUsuario, genero, academia, avaliacao, treino)
       .then(function (resultado) {
         res.json(resultado);
       })
       .catch(function (erro) {
         console.log(erro);
         console.log(
-          "\nHouve um erro ao realizar o cadastro! Erro: ",
+          "\nHouve um erro ao realizar o formulario! Erro: ",
           erro.sqlMessage,
         );
         res.status(500).json(erro.sqlMessage);
@@ -51,9 +54,9 @@ function enivar(req, res) {
   }
 }
 
-
 module.exports = {
   buscarPorId,
   listarAcademia,
   listarTreinos,
+  enviar,
 };

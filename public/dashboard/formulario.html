@@ -48,7 +48,7 @@
     />
   </head>
 
-  <body onload=" listarAcademia(), listarTreinos()">
+  <body onload=" listarAcademia(), listarTreinos(), validarSessao()">
     <div class="janela">
       <div class="header-left dash-header">
         <h1>Academia</h1>
@@ -79,15 +79,20 @@
       </div>
 
       <div class="dash">
+        <div class="alerta_erro">
+          <div class="card_erro" id="cardErro">
+            <span id="mensagem_erro"></span>
+          </div>
+        </div>
         <div id="alerta"></div>
         <main class="conteudo-principal">
           <div class="container-principal">
             <div class="container-login">
               <h5 class="login-titulo" style="margin: 0">Formulario</h5>
-              <div class="input-container">
+              <div class="input-container box">
                 <span>Qual seu genero?</span>
                 <select name="empresas" id="listaGenero">
-                  <option selected>Selecione seu genero</option>
+                  <option selected value="">Selecione seu genero</option>
                   <option value="Masculino">Masculino</option>
                   <option value="Feminino">Feminino</option>
                   <option value="nao">Prefiro não informar</option>
@@ -96,13 +101,13 @@
               <div class="input-container">
                 <span>Qual melhor academia:</span>
                 <select name="empresas" id="listaAcademia">
-                  <option selected>Selecione uma Academia</option>
+                  <option selected value="">Selecione uma Academia</option>
                 </select>
               </div>
               <div class="input-container">
                 <span>Qual sua avaliação para esta academia?</span>
                 <select name="empresas" id="listaAvaliacao">
-                  <option selected>Selecione uma Nota</option>
+                  <option selected value="">Selecione uma Nota</option>
                   <option value="0">0</option>
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -116,15 +121,18 @@
                   <option value="10">10</option>
                 </select>
               </div>
-              <div class="input-container">
+              <div class="input-container input-container-treino">
                 <span>Qual seu treino favorito:</span>
                 <select name="empresas" id="listaTreino">
-                  <option selected>Selecione um treino</option>
+                  <option selected value="">Selecione um treino</option>
                 </select>
               </div>
-              <button class="botao botao-login" onclick="enivar()">
+              <button class="botao botao-login" onclick="enviar()">
                 Enivar
               </button>
+              <div id="div_aguardar" class="loading-div">
+                <img src="./assets/circle-loading.gif" id="loading-gif" />
+              </div>
             </div>
           </div>
         </main>
@@ -132,67 +140,68 @@
     </div>
   </body>
   <script>
-    function enivar() {
+    function enviar() {
       aguardar();
 
-      //Recupere o valor da nova input pelo nome do id
-      // Agora vá para o método fetch logo abaixo
-      var idUsuario = sessionStorage.ID_USUARIO;
+      var idUsuario = sessionStorage.getItem("ID_USUARIO"); // Certifique-se de usar sessionStorage.getItem
       var generoVar = listaGenero.value;
       var avaliacaoVar = listaAvaliacao.value;
       var academiaVar = listaAcademia.value;
       var treinoVar = listaTreino.value;
 
-      if (nomeVar.length <= 1) {
-        alert("Insira um nome valido com mais de 1 caracter");
-      } else if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".") == -1) {
-        alert("Insira um email valido com @ e .");
-      } else if (senhaVar.length < 6) {
-        alert("Insira uma senha valida de mais de 6 caracteres");
-      } else if (confirmacaoSenhaVar !== senhaVar) {
-        alert("A senha de confirmação tem que ser igual a senha");
-      } else if (cpfVar < 11) {
-        alert("Insira um cpf valido com 11 digitos");
-      } else if (empresaVar == "") {
-        alert("Selecione uma empresa");
-      } else {
-        // Enviando o valor da nova input
-        fetch(`/academia/enviar/${idUsuario}`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-     
-            idUsuario: idUsuario,
-            generoServer: generoVar,
-            avaliacaoServer: avaliacaoVar,
-            academiaServer: academiaVar,
-            treinoServer: treinodVar,
-          }),
-        })
-          .then(function (resposta) {
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-              cardErro.style.display = "block";
-
-              mensagem_erro.innerHTML =
-            "Formulario enviado com sucesso!";
-
-              limparFormulario();
-              finalizarAguardar();
-            } else {
-              throw "Houve um erro ao tentar realizar o cadastro!";
-            }
-          })
-          .catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            finalizarAguardar();
-          });
-
+      // Verificação básica dos valores antes de enviar
+      if (
+        idUsuario == '' ||
+        generoVar == '' ||
+        avaliacaoVar == '' ||
+        academiaVar == '' ||
+        treinoVar == '' 
+      ) {
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML = "Preencha todos os campos antes de enviar!";
+        finalizarAguardar();
         return false;
       }
+
+      console.log(`Enviando dados com idUsuario: ${idUsuario}`);
+
+      // Enviando o valor da nova input
+      fetch(`/academia/enviar/${idUsuario}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          generoServer: generoVar,
+          avaliacaoServer: avaliacaoVar,
+          academiaServer: academiaVar,
+          treinoServer: treinoVar,
+        }),
+      })
+        .then(function (resposta) {
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+            resposta.json().then((data) => {
+              cardErro.style.display = "block";
+              mensagem_erro.innerHTML = "Formulário enviado com sucesso!";
+              finalizarAguardar();
+            });
+          } else {
+            resposta.text().then((texto) => {
+              throw new Error(texto);
+            });
+          }
+        })
+        .catch(function (erro) {
+          console.log(`#ERRO: ${erro}`);
+          cardErro.style.display = "block";
+          mensagem_erro.innerHTML =
+            "Houve um erro ao tentar enviar o formulário!";
+          finalizarAguardar();
+        });
+
+      return false;
     }
 
     function listarAcademia() {
@@ -202,7 +211,7 @@
         .then(function (resposta) {
           resposta.json().then((academias) => {
             academias.forEach((academia) => {
-              listaAcademia.innerHTML += `<option value='${academia.id}'>${academia.nome}</option>`;
+              listaAcademia.innerHTML += `<option value='${academia.idAcademia}'>${academia.nome}</option>`;
             });
           });
         })
@@ -218,7 +227,7 @@
         .then(function (resposta) {
           resposta.json().then((treinos) => {
             treinos.forEach((treino) => {
-                listaTreino.innerHTML += `<option value='${treino.id}'>${treino.nomeTreino}</option>`;
+              listaTreino.innerHTML += `<option value='${treino.idTreinos}'>${treino.nomeTreino}</option>`;
             });
           });
         })

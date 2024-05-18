@@ -24,10 +24,10 @@ function buscarPorNome(nome) {
   return database.executar(instrucaoSql);
 }
 
-function enviar(fkIdusuario, sexo, fkIdAcademia, avaliacao, fkIdTreinos) {
+function enviar(idUsuario, sexo, fkIdAcademia, avaliacao, fkIdTreinos) {
   console.log(
     "ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():",
-    fkIdusuario,
+    idUsuario,
     sexo,
     fkIdAcademia,
     avaliacao,
@@ -35,10 +35,16 @@ function enviar(fkIdusuario, sexo, fkIdAcademia, avaliacao, fkIdTreinos) {
   );
 
   var instrucaoSql = `
-        INSERT INTO usuario (email, nome, senha) VALUES ('${fkIdusuario}', '${sexo}', '${fkIdAcademia}', '${avaliacao}', '${fkIdTreinos}' );
+        INSERT INTO Formulario (fkIdusuario, sexo, fkIdAcademia, avaliacao, fkIdTreinos) VALUES ('${idUsuario}', '${sexo}', '${fkIdAcademia}', '${avaliacao}', '${fkIdTreinos}' );
     `;
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
 }
 
-module.exports = { buscarPorId, listarAcademia, buscarPorNome , enviar, listarTreinos};
+module.exports = {
+  buscarPorId,
+  listarAcademia,
+  buscarPorNome,
+  enviar,
+  listarTreinos,
+};
