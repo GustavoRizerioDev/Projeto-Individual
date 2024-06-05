@@ -20,4 +20,8 @@ router.get("/listarTreinos", function (req, res) {
   academiaController.listarTreinos(req, res);
 });
 
+router.get("/ultimas", function (req, res) {
+  medidaController.buscarUltimasMedidas(req, res);
+});
+
 module.exports = router;
