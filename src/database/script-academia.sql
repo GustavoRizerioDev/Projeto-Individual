@@ -55,18 +55,48 @@ CREATE TABLE Formulario (
   fkIdTreinos INT NOT NULL,
   PRIMARY KEY (idFormulario),
     FOREIGN KEY (fkIdusuario) REFERENCES usuario (idusuario),
-    FOREIGN KEY (fkIdAcademia) REFERENCES Treinos (idTreinos),
-    FOREIGN KEY (fkIdTreinos) REFERENCES Academia (idAcademia)
+	FOREIGN KEY (fkIdAcademia) REFERENCES Academia (idAcademia),
+	FOREIGN KEY (fkIdTreinos) REFERENCES Treinos (idTreinos)
 );
 
+SELECT 
+	u.idusuario as idUsuario,
+    u.Nome AS nome_usuario,
+    f.sexo,
+    a.nome AS nome_academia,
+    f.avaliacao,
+    t.nomeTreino
+FROM Formulario f
+    INNER JOIN usuario u ON f.fkIdusuario = u.idusuario
+    INNER JOIN Academia a ON f.fkIdAcademia = a.idAcademia
+    INNER JOIN Treinos t ON f.fkIdTreinos = t.idTreinos
+WHERE f.fkIdAcademia =idAcademia
+ORDER BY f.idFormulario DESC;
+
+truncate formulario;
+
+
 CREATE TABLE Rotina (
-    idrotina INT NOT NULL auto_increment,
-    nome VARCHAR(45) NULL,
-    descricao VARCHAR(45) NULL,
+    idRotina INT NOT NULL auto_increment,
+    titulo VARCHAR(200) NULL,
+    descricao TEXT NULL,
     fkidusuario INT NOT NULL,
     PRIMARY KEY (idrotina),
     FOREIGN KEY (fkidusuario) REFERENCES usuario (idusuario)
 );
+
+SELECT 
+            a.idrotina AS idRotina,
+            a.titulo,
+            a.descricao,
+            a.fkidusuario,
+            u.idusuario AS idUsuario,
+            u.nome,
+            u.email,
+            u.senha
+        FROM Rotina a
+            INNER JOIN usuario u
+                ON a.fkidusuario = u.idusuario;
 
 select * from usuario;
 select * from academia;
