@@ -1,4 +1,5 @@
 var usuarioModel = require("../models/usuarioModel");
+var academiaModel = require("../models/academiaModel"); // Certifique-se de que isso esteja corretamente importado
 
 function autenticar(req, res) {
   var email = req.body.emailServer;
@@ -16,14 +17,29 @@ function autenticar(req, res) {
         console.log(`Resultados: ${JSON.stringify(resultadoAutenticar)}`); // transforma JSON em String
 
         if (resultadoAutenticar.length == 1) {
-          console.log(resultadoAutenticar);
+          let usuario = resultadoAutenticar[0];
+          let idAcademia = usuario.idAcademia; // Certifique-se de que este campo exista e seja válido
 
-          res.json({
-            id: resultadoAutenticar[0].idusuario,
-            email: resultadoAutenticar[0].email,
-            nome: resultadoAutenticar[0].nome,
-            senha: resultadoAutenticar[0].senha,
-          });
+          // Buscar últimas medidas
+          academiaModel
+            .buscarUltimasMedidas(idAcademia, 10) // Assumindo 10 como limite de linhas
+            .then(function (resultadoMedidas) {
+              res.json({
+                id: usuario.idusuario,
+                email: usuario.email,
+                nome: usuario.nome,
+                idAcademia: idAcademia,
+                dadosAcademia: resultadoMedidas,
+              });
+            })
+            .catch(function (erro) {
+              console.log(erro);
+              console.log(
+                "\nHouve um erro ao buscar as últimas medidas! Erro: ",
+                erro.sqlMessage,
+              );
+              res.status(500).json(erro.sqlMessage);
+            });
         } else if (resultadoAutenticar.length == 0) {
           res.status(403).send("Email e/ou senha inválido(s)");
         } else {
@@ -40,6 +56,11 @@ function autenticar(req, res) {
       });
   }
 }
+
+module.exports = {
+  autenticar,
+  cadastrar,
+};
 
 function cadastrar(req, res) {
   // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
