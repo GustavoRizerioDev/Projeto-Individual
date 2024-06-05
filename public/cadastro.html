@@ -71,6 +71,14 @@
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
 
+    let senhaValidaNumeros = false;
+
+    for (let contador = 0; contador <= 9; contador++) {
+      if (senhaVar.indexOf(`${contador}`) > -1) {
+        senhaValidaNumeros = true;
+      }
+    }
+
     if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".") == -1) {
       mensagem_erro.innerHTML =
         "Houve um erro ao tentar realizar o cadastro! insira um Email valido";
@@ -78,6 +86,10 @@
     } else if (nomeVar.length <= 1) {
       mensagem_erro.innerHTML =
         "Houve um erro ao tentar realizar o cadastro! insira um Nome maior";
+      cardErro.style.display = "block";
+    }else if (senhaValidaNumeros == false) {
+      mensagem_erro.innerHTML =
+        "Houve um erro ao tentar realizar o cadastro! insira pelo menos um numero na senha";
       cardErro.style.display = "block";
     } else if (senhaVar.length < 6) {
       mensagem_erro.innerHTML =

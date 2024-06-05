@@ -9,8 +9,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AquaTech | Tempo Real</title>
-
+    <link
+      rel="shortcut icon"
+      href="../assets/icon/icon.png"
+      type="image/x-icon"
+    />
+    <title>Academia | Formulario</title>
     <link rel="stylesheet" href="./../css/dashboards.css" />
     <link rel="stylesheet" href="./../css/estilo.css" />
     <link rel="stylesheet" href="../css/login/login.css" />
@@ -19,11 +23,9 @@
         border: 1px solid var(--vermelho);
         padding: 15px 40px;
         font-size: 20px;
-
         color: white;
         background-color: var(--vermelho);
         font-family: "Bebas Neue", sans-serif;
-
         transition: 1s;
       }
 
@@ -32,13 +34,15 @@
         background-color: #be0000;
         font-size: 22px;
       }
-    </style>
 
+      #formulario-container {
+        display: block;
+      }
+    </style>
     <script
       src="https://kit.fontawesome.com/fc5e9b4747.js"
       crossorigin="anonymous"
     ></script>
-
     <script src="../js/sessao.js"></script>
     <script src="../js/alerta.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -47,32 +51,28 @@
       rel="stylesheet"
     />
   </head>
-
-  <body onload=" listarAcademia(), listarTreinos(), validarSessao()">
+  <body
+    onload="listarAcademia(), listarTreinos(), validarSessao(), checarFormulario()"
+  >
     <div class="janela">
       <div class="header-left dash-header">
         <h1>Academia</h1>
-
         <div class="hello">
           <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
         </div>
-
         <div class="btn-nav">
           <h3>Formulario</h3>
         </div>
-
         <div class="btn-nav-white">
           <a href="./dashboard.html">
             <h3>Gráficos</h3>
           </a>
         </div>
-
         <div class="btn-nav-white">
-          <a href="./mural.html">
-            <h3>Rotina</h3>
+          <a href="./rotina.html">
+            <h3>Dicas</h3>
           </a>
         </div>
-
         <div class="btn-logout" onclick="limparSessao()">
           <h3>Sair</h3>
         </div>
@@ -88,156 +88,198 @@
         <main class="conteudo-principal">
           <div class="container-principal">
             <div class="container-login">
-              <h5 class="login-titulo" style="margin: 0">Formulario</h5>
-              <div class="input-container box">
-                <span>Qual seu genero?</span>
-                <select name="empresas" id="listaGenero">
-                  <option selected value="">Selecione seu genero</option>
-                  <option value="Masculino">Masculino</option>
-                  <option value="Feminino">Feminino</option>
-                  <option value="nao">Prefiro não informar</option>
-                </select>
-              </div>
-              <div class="input-container">
-                <span>Qual melhor academia:</span>
-                <select name="empresas" id="listaAcademia">
-                  <option selected value="">Selecione uma Academia</option>
-                </select>
-              </div>
-              <div class="input-container">
-                <span>Qual sua avaliação para esta academia?</span>
-                <select name="empresas" id="listaAvaliacao">
-                  <option selected value="">Selecione uma Nota</option>
-                  <option value="0">0</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                </select>
-              </div>
-              <div class="input-container input-container-treino">
-                <span>Qual seu treino favorito:</span>
-                <select name="empresas" id="listaTreino">
-                  <option selected value="">Selecione um treino</option>
-                </select>
-              </div>
-              <button class="botao botao-login" onclick="enviar()">
-                Enivar
-              </button>
-              <div id="div_aguardar" class="loading-div">
-                <img src="./assets/circle-loading.gif" id="loading-gif" />
+              <h1 id="titulo-formulario" style="display: none">
+                Formulario já preenchido, muito obrigado!!
+              </h1>
+              <div id="formulario-container">
+                <h5 class="login-titulo" style="margin: 0">Formulario</h5>
+                <div class="input-container box">
+                  <span>Qual seu genero?</span>
+                  <select name="empresas" id="listaGenero">
+                    <option selected value="">Selecione seu genero</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Feminino">Feminino</option>
+                    <option value="nao">Prefiro não informar</option>
+                  </select>
+                </div>
+                <div class="input-container">
+                  <span>Qual melhor academia:</span>
+                  <select name="empresas" id="listaAcademia">
+                    <option selected value="">Selecione uma Academia</option>
+                  </select>
+                </div>
+                <div class="input-container">
+                  <span>Qual sua avaliação para esta academia?</span>
+                  <select name="empresas" id="listaAvaliacao">
+                    <option selected value="">Selecione uma Nota</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                  </select>
+                </div>
+                <div class="input-container input-container-treino">
+                  <span>Qual seu treino favorito:</span>
+                  <select name="empresas" id="listaTreino">
+                    <option selected value="">Selecione um treino</option>
+                  </select>
+                </div>
+                <button class="botao botao-login" onclick="enviar()">
+                  Enviar
+                </button>
+                <div id="div_aguardar" class="loading-div">
+                  <img src="./assets/circle-loading.gif" id="loading-gif" />
+                </div>
               </div>
             </div>
           </div>
         </main>
       </div>
     </div>
-  </body>
-  <script>
-    function enviar() {
-      aguardar();
 
-      var idUsuario = sessionStorage.getItem("ID_USUARIO"); // Certifique-se de usar sessionStorage.getItem
-      var generoVar = listaGenero.value;
-      var avaliacaoVar = listaAvaliacao.value;
-      var academiaVar = listaAcademia.value;
-      var treinoVar = listaTreino.value;
+    <script>
+      function checarFormulario() {
+        var idUsuario = sessionStorage.getItem("ID_USUARIO");
+        var dadosFormulario = sessionStorage.getItem("dadosFormulario");
 
-      // Verificação básica dos valores antes de enviar
-      if (
-        idUsuario == '' ||
-        generoVar == '' ||
-        avaliacaoVar == '' ||
-        academiaVar == '' ||
-        treinoVar == '' 
-      ) {
-        cardErro.style.display = "block";
-        mensagem_erro.innerHTML = "Preencha todos os campos antes de enviar!";
-        finalizarAguardar();
+        if (dadosFormulario) {
+          var dados = JSON.parse(dadosFormulario);
+          if (dados.idUsuario == idUsuario) {
+            document.getElementById("formulario-container").style.display =
+              "none";
+            document.getElementById("titulo-formulario").style.display =
+              "block";
+            console.log("Formulário já preenchido.");
+          }
+        }
+      }
+
+      function enviar() {
+        aguardar();
+
+        // Recupera os valores do formulário
+        var idUsuario = sessionStorage.getItem("ID_USUARIO");
+        var generoVar = listaGenero.value;
+        var avaliacaoVar = listaAvaliacao.value;
+        var academiaVar = listaAcademia.value;
+        var treinoVar = listaTreino.value;
+
+        // Verifica se todos os campos foram preenchidos
+        if (
+          idUsuario == "" ||
+          generoVar == "" ||
+          avaliacaoVar == "" ||
+          academiaVar == "" ||
+          treinoVar == ""
+        ) {
+          cardErro.style.display = "block";
+          mensagem_erro.innerHTML = "Preencha todos os campos antes de enviar!";
+          finalizarAguardar();
+          return false;
+        }
+
+        console.log(`Enviando dados com idUsuario: ${idUsuario}`);
+
+        // Cria um objeto JSON com os dados do formulário
+        var dadosFormulario = {
+          idUsuario: idUsuario,
+          genero: generoVar,
+          avaliacao: avaliacaoVar,
+          academia: academiaVar,
+          treino: treinoVar,
+        };
+
+        // Converte o objeto JSON em uma string
+        var dadosFormularioString = JSON.stringify(dadosFormulario);
+
+        // Armazena a string na sessionStorage
+        sessionStorage.setItem("dadosFormulario", dadosFormularioString);
+
+        // Envia os dados para o servidor
+        fetch(`/academia/enviar/${idUsuario}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            generoServer: generoVar,
+            avaliacaoServer: avaliacaoVar,
+            academiaServer: academiaVar,
+            treinoServer: treinoVar,
+          }),
+        })
+          .then(function (resposta) {
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+              resposta.json().then((data) => {
+                cardErro.style.display = "block";
+                mensagem_erro.innerHTML = "Formulário enviado com sucesso!";
+                finalizarAguardar();
+                // Recarrega a página após um curto intervalo para mostrar a mensagem de sucesso
+                setTimeout(function () {
+                  location.reload();
+                }, 2000); // Ajuste o tempo conforme necessário
+              });
+            } else {
+              resposta.text().then((texto) => {
+                throw new Error(texto);
+              });
+            }
+          })
+          .catch(function (erro) {
+            console.log(`#ERRO: ${erro}`);
+            cardErro.style.display = "block";
+            mensagem_erro.innerHTML =
+              "Houve um erro ao tentar enviar o formulário!";
+            finalizarAguardar();
+          });
+
         return false;
       }
 
-      console.log(`Enviando dados com idUsuario: ${idUsuario}`);
-
-      // Enviando o valor da nova input
-      fetch(`/academia/enviar/${idUsuario}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          generoServer: generoVar,
-          avaliacaoServer: avaliacaoVar,
-          academiaServer: academiaVar,
-          treinoServer: treinoVar,
-        }),
-      })
-        .then(function (resposta) {
-          console.log("resposta: ", resposta);
-
-          if (resposta.ok) {
-            resposta.json().then((data) => {
-              cardErro.style.display = "block";
-              mensagem_erro.innerHTML = "Formulário enviado com sucesso!";
-              finalizarAguardar();
-            });
-          } else {
-            resposta.text().then((texto) => {
-              throw new Error(texto);
-            });
-          }
+      function listarAcademia() {
+        fetch("/academia/listarAcademia", {
+          method: "GET",
         })
-        .catch(function (erro) {
-          console.log(`#ERRO: ${erro}`);
-          cardErro.style.display = "block";
-          mensagem_erro.innerHTML =
-            "Houve um erro ao tentar enviar o formulário!";
-          finalizarAguardar();
-        });
-
-      return false;
-    }
-
-    function listarAcademia() {
-      fetch("/academia/listarAcademia", {
-        method: "GET",
-      })
-        .then(function (resposta) {
-          resposta.json().then((academias) => {
-            academias.forEach((academia) => {
-              listaAcademia.innerHTML += `<option value='${academia.idAcademia}'>${academia.nome}</option>`;
+          .then(function (resposta) {
+            resposta.json().then((academias) => {
+              academias.forEach((academia) => {
+                listaAcademia.innerHTML += `<option value='${academia.idAcademia}'>${academia.nome}</option>`;
+              });
             });
+          })
+          .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
           });
-        })
-        .catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
-        });
-    }
+      }
 
-    function listarTreinos() {
-      fetch("/academia/listarTreinos", {
-        method: "GET",
-      })
-        .then(function (resposta) {
-          resposta.json().then((treinos) => {
-            treinos.forEach((treino) => {
-              listaTreino.innerHTML += `<option value='${treino.idTreinos}'>${treino.nomeTreino}</option>`;
+      function listarTreinos() {
+        fetch("/academia/listarTreinos", {
+          method: "GET",
+        })
+          .then(function (resposta) {
+            resposta.json().then((treinos) => {
+              treinos.forEach((treino) => {
+                listaTreino.innerHTML += `<option value='${treino.idTreinos}'>${treino.nomeTreino}</option>`;
+              });
             });
+          })
+          .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
           });
-        })
-        .catch(function (resposta) {
-          console.log(`#ERRO: ${resposta}`);
-        });
-    }
+      }
 
-    function sumirMensagem() {
-      cardErro.style.display = "none";
-    }
-  </script>
+      function sumirMensagem() {
+        cardErro.style.display = "none";
+      }
+    </script>
+  </body>
 </html>

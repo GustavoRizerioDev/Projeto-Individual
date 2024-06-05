@@ -6,7 +6,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Página Inicial</title>
+    <link
+      rel="shortcut icon"
+      href="../assets/icon/icon.png"
+      type="image/x-icon"
+    />
+    <title>Academia | Editar Rotina</title>
 
     
     <link rel="stylesheet" href="./../css/dashboards.css">
@@ -46,8 +51,8 @@
             </div>
 
             <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Rotina</h3>
+                <a href="./rotina.html">
+                    <h3>Dicas</h3>
                 </a>
             </div>
 
@@ -82,9 +87,9 @@
                         </label>
                         <br>
                         <label>
-                            Descrição (máximo de 250 caracteres):
+                            Descrição:
                             <br>
-                            <textarea id="textarea_descricao" maxlength="250" rows="5"></textarea>
+                            <textarea id="textarea_descricao" rows="10"></textarea>
                         </label>
                         <br>
                         <button onclick="editar()">Editar</button>
@@ -104,7 +109,7 @@
     }
 
     function editar() {
-        fetch(`/avisos/editar/${sessionStorage.getItem("ID_POSTAGEM_EDITANDO")}`, {
+        fetch(`/rotina/editar/${sessionStorage.getItem("ID_POSTAGEM_EDITANDO")}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
@@ -116,7 +121,7 @@
 
             if (resposta.ok) {
                 window.alert("Post atualizado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                window.location = "/dashboard/mural.html"
+                window.location = "/dashboard/rotina.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
