@@ -145,19 +145,24 @@
     </div>
 
     <script>
+
       function checarFormulario() {
         var idUsuario = sessionStorage.getItem("ID_USUARIO");
-        var dadosFormulario = sessionStorage.getItem("dadosFormulario");
+        var dadosFormularioArray =
+          JSON.parse(sessionStorage.getItem("DADOS_ACADEMIA")) || [];
+          var dadosFormulario = sessionStorage.getItem("dadosFormulario");
 
-        if (dadosFormulario) {
-          var dados = JSON.parse(dadosFormulario);
-          if (dados.idUsuario == idUsuario) {
-            document.getElementById("formulario-container").style.display =
-              "none";
-            document.getElementById("titulo-formulario").style.display =
-              "block";
-            console.log("Formulário já preenchido.");
-          }
+        var formularioPreenchido = dadosFormularioArray.some(
+          (dados) => dados.idUsuario == idUsuario,
+        );
+
+        var dados = JSON.parse(dadosFormulario);
+
+        if (formularioPreenchido || dados.idUsuario == idUsuario) {
+          document.getElementById("formulario-container").style.display =
+            "none";
+          document.getElementById("titulo-formulario").style.display = "block";
+          console.log("Formulário já preenchido.");
         }
       }
 
@@ -187,7 +192,6 @@
 
         console.log(`Enviando dados com idUsuario: ${idUsuario}`);
 
-        // Cria um objeto JSON com os dados do formulário
         var dadosFormulario = {
           idUsuario: idUsuario,
           genero: generoVar,
@@ -196,13 +200,10 @@
           treino: treinoVar,
         };
 
-        // Converte o objeto JSON em uma string
         var dadosFormularioString = JSON.stringify(dadosFormulario);
 
-        // Armazena a string na sessionStorage
         sessionStorage.setItem("dadosFormulario", dadosFormularioString);
 
-        // Envia os dados para o servidor
         fetch(`/academia/enviar/${idUsuario}`, {
           method: "POST",
           headers: {
@@ -223,10 +224,9 @@
                 cardErro.style.display = "block";
                 mensagem_erro.innerHTML = "Formulário enviado com sucesso!";
                 finalizarAguardar();
-                // Recarrega a página após um curto intervalo para mostrar a mensagem de sucesso
                 setTimeout(function () {
                   location.reload();
-                }, 2000); // Ajuste o tempo conforme necessário
+                }, 1000); 
               });
             } else {
               resposta.text().then((texto) => {

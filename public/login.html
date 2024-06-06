@@ -101,7 +101,7 @@
         } else {
             console.log("Houve um erro ao tentar realizar o login!");
             cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Usuario não exis";
+            mensagem_erro.innerHTML = "Usuario não existe";
             resposta.text().then(texto => {
                 console.error(texto);
                 finalizarAguardar(texto);

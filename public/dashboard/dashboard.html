@@ -77,45 +77,40 @@
     </div>
 
     <script>
-      // Exibe o nome do usuário
+      
       document.getElementById("b_usuario").innerHTML = sessionStorage.NOME_USUARIO;
 
       function plotarGraficos() {
         let dados = JSON.parse(sessionStorage.getItem("DADOS_ACADEMIA"));
 
-        // Agrupar avaliações por academia
+      
         let academias = {};
         let treinoPorSexo = { Masculino: {}, Feminino: {} };
         let academiaPorSexo = { Masculino: {}, Feminino: {} };
         let academiaEscolhidas = {};
 
         dados.forEach((dado) => {
-          // Agrupar por academia
           if (!academias[dado.nome_academia]) {
             academias[dado.nome_academia] = [];
           }
           academias[dado.nome_academia].push(dado.avaliacao);
 
-          // Agrupar treino preferido por sexo
           if (!treinoPorSexo[dado.sexo][dado.nomeTreino]) {
             treinoPorSexo[dado.sexo][dado.nomeTreino] = 0;
           }
           treinoPorSexo[dado.sexo][dado.nomeTreino]++;
 
-          // Agrupar academia preferida por sexo
           if (!academiaPorSexo[dado.sexo][dado.nome_academia]) {
             academiaPorSexo[dado.sexo][dado.nome_academia] = 0;
           }
           academiaPorSexo[dado.sexo][dado.nome_academia]++;
 
-          // Contagem de academias escolhidas
           if (!academiaEscolhidas[dado.nome_academia]) {
             academiaEscolhidas[dado.nome_academia] = 0;
           }
           academiaEscolhidas[dado.nome_academia]++;
         });
 
-        // Dados para o gráfico de avaliações por academia
         let labelsAcademia = Object.keys(academias);
         let dataAvaliacoes = labelsAcademia.map((acad) => {
           let sum = academias[acad].reduce((a, b) => a + b, 0);
@@ -128,8 +123,8 @@
             {
               label: "Avaliações",
               data: dataAvaliacoes,
-              backgroundColor: "rgba(255, 10, 10, 0.3)", // Vermelho com opacidade
-              borderColor: "rgb(255, 0, 0)", // Vermelho
+              backgroundColor: "rgba(255, 10, 10, 0.3)", 
+              borderColor: "rgb(255, 0, 0)", 
               borderWidth: 1,
               barPercentage: 0.9,
               barThickness: 70,
@@ -138,7 +133,7 @@
           ],
         };
 
-        // Dados para o gráfico de treino preferido por sexo
+  
         let labelsTreino = [...new Set(dados.map((dado) => dado.nomeTreino))];
         let dataTreinoMasculino = labelsTreino.map(
           (treino) => treinoPorSexo.Masculino[treino] || 0,
@@ -173,7 +168,7 @@
           ],
         };
 
-        // Dados para o gráfico de academia preferida por sexo
+
         let labelsAcademiaSexo = [
           ...new Set(dados.map((dado) => dado.nome_academia)),
         ];
@@ -208,7 +203,6 @@
           ],
         };
 
-        // Dados para o gráfico de pizza de academias mais escolhidas
         let labelsAcademiaEscolhidas = Object.keys(academiaEscolhidas);
         let dataAcademiaEscolhidas = Object.values(academiaEscolhidas);
 
