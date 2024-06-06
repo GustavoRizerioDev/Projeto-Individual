@@ -49,7 +49,7 @@ function buscarUltimasMedidas() {
                     INNER JOIN Academia a ON f.fkIdAcademia = a.idAcademia
                     INNER JOIN Treinos t ON f.fkIdTreinos = t.idTreinos
                       ORDER BY 
-                        f.idFormulario DESC`;
+                        f.idFormulario`;
 
   console.log("Executando a instrução SQL: \n" + instrucaoSql);
   return database.executar(instrucaoSql);
